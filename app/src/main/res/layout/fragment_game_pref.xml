@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/fragment_game_pref_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:text="TicTacToe Game"
+        android:textColor="@android:color/holo_blue_bright"
+        android:textSize="32sp" />
+
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/fragment_game_current_turn_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
+        android:gravity="center"
+        android:layout_below="@+id/fragment_game_pref_title"
+        android:text="X its your turn"
+        android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/fragment_game_pref_choose_board_size"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/fragment_game_pref_title"
+        android:layout_margin="32dp"
+        android:hint="Please Choose Board Size"
+        android:inputType="number" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/fragment_game_pref_start_game_button"
+        android:layout_below="@+id/fragment_game_pref_choose_board_size">
+
+        <LinearLayout
+            android:id="@+id/board_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="vertical">
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <Button
+        android:id="@+id/fragment_game_pref_start_game_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="32dp"
+        android:background="@android:color/holo_blue_bright"
+        android:text="Start Game!"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white" />
+
+</RelativeLayout>
