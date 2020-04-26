@@ -97,6 +97,7 @@ class GamePrefFragment : Fragment(), View.OnClickListener {
         startRestartButton.text = Constants.START
     }
 
+    // TODO Liad - add winner logic
     private fun checkForWinner() {
         var counter = 0
         for (row in buttonsArr.withIndex()) {
@@ -109,12 +110,13 @@ class GamePrefFragment : Fragment(), View.OnClickListener {
                 }
             }
         }
-        if (roundPlayedCounter == (buttonsArr.size * buttonsArr.size)) {
+
+        /*if (roundPlayedCounter == (buttonsArr.size * buttonsArr.size)) {
             toast(context!!, "Its a tie")
             Handler().postDelayed({
                 restartBoard()
             },1000)
-        }
+        }*/
     }
 
     private fun isValidInput(boardSize: String): Boolean {
