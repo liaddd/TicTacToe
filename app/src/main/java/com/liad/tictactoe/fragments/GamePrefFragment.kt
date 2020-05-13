@@ -1,7 +1,6 @@
 package com.liad.tictactoe.fragments
 
 import android.os.Bundle
-import android.os.Handler
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -57,9 +56,7 @@ class GamePrefFragment : Fragment(), View.OnClickListener {
                 } else {
                     val boardSize = boardSizeET.text.toString()
                     if (!isValidInput(boardSize)) return
-                    boardSizeET.visibility = View.INVISIBLE
-                    drawBoard(boardSize.toInt())
-                    startGame()
+                    startGame(boardSize)
                 }
             }
             else -> {
@@ -83,13 +80,14 @@ class GamePrefFragment : Fragment(), View.OnClickListener {
         currentTurnTV.text = if (isX) "X its your turn" else "O its your turn"
     }
 
-    private fun startGame() {
+    private fun startGame(boardSize : String) {
+        boardSizeET.visibility = View.INVISIBLE
+        drawBoard(boardSize.toInt())
         startRestartButton.text = Constants.RESTART
         updateCurrentTurn(isX)
     }
 
     private fun restartBoard() {
-        //buttonsArr.forEach { it.forEach { button -> button.text = "" } }
         mainContainer.removeAllViews()
         boardSizeET.text = null
         boardSizeET.visibility = View.VISIBLE
@@ -103,20 +101,13 @@ class GamePrefFragment : Fragment(), View.OnClickListener {
         for (row in buttonsArr.withIndex()) {
             //Log.d("Liad" , "row: ${row.index}")
             for (column in row.value.withIndex()) {
-                //Log.d("Liad" , "column: ${column.value.text}")
+                Log.d("Liad", "column: ${column.value.text}")
                 if (column.value.text == Constants.X) {
                     counter++
                     Log.d("Liad", "counter: $counter")
                 }
             }
         }
-
-        /*if (roundPlayedCounter == (buttonsArr.size * buttonsArr.size)) {
-            toast(context!!, "Its a tie")
-            Handler().postDelayed({
-                restartBoard()
-            },1000)
-        }*/
     }
 
     private fun isValidInput(boardSize: String): Boolean {
@@ -132,7 +123,6 @@ class GamePrefFragment : Fragment(), View.OnClickListener {
     }
 
     private fun drawBoard(boardSize: Int) {
-        // TODO Liad - make sure the @boardSize can be divided to Int without decimal
         buttonsArr = Array(boardSize) { Array(boardSize) { Button(context) } }
         mainContainer.removeAllViews()
 
